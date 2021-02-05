@@ -1,0 +1,15 @@
+syntax = "proto3";
+package faddat.investodemo.investodemo;
+
+option go_package = "github.com/faddat/investo-demo/x/investodemo/types";
+
+import "gogoproto/gogo.proto";
+
+message Company {
+  string creator = 1;
+  string id = 2;
+  string mktgroi = 3; 
+  string logo = 4; 
+  string netflow = 5; 
+  string industry = 6; 
+}

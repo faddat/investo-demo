@@ -8,6 +8,38 @@ option go_package = "github.com/faddat/investo-demo/x/investodemo/types";
 // Msg defines the Msg service.
 service Msg {
     // this line is used by starport scaffolding # proto/tx/rpc
+  rpc CreateCompany(MsgCreateCompany) returns (MsgCreateCompanyResponse);
+  rpc UpdateCompany(MsgUpdateCompany) returns (MsgUpdateCompanyResponse);
+  rpc DeleteCompany(MsgDeleteCompany) returns (MsgDeleteCompanyResponse);
 }
 
 // this line is used by starport scaffolding # proto/tx/message
+message MsgCreateCompany {
+  string creator = 1;
+  string mktgroi = 2;
+  string logo = 3;
+  string netflow = 4;
+  string industry = 5;
+}
+
+message MsgCreateCompanyResponse {
+  string id = 1;
+}
+
+message MsgUpdateCompany {
+  string creator = 1;
+  string id = 2;
+  string mktgroi = 3;
+  string logo = 4;
+  string netflow = 5;
+  string industry = 6;
+}
+
+message MsgUpdateCompanyResponse { }
+
+message MsgDeleteCompany {
+  string creator = 1;
+  string id = 2;
+}
+
+message MsgDeleteCompanyResponse { }

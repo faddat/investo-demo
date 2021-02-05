@@ -4,12 +4,36 @@ package faddat.investodemo.investodemo;
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 // this line is used by starport scaffolding # 1
+import "investodemo/company.proto";
 
 option go_package = "github.com/faddat/investo-demo/x/investodemo/types";
 
 // Query defines the gRPC querier service.
 service Query {
     // this line is used by starport scaffolding # 2
+	rpc Company(QueryGetCompanyRequest) returns (QueryGetCompanyResponse) {
+		option (google.api.http).get = "/faddat/investodemo/investodemo/company/{id}";
+	}
+	rpc CompanyAll(QueryAllCompanyRequest) returns (QueryAllCompanyResponse) {
+		option (google.api.http).get = "/faddat/investodemo/investodemo/company";
+	}
+
 }
 
 // this line is used by starport scaffolding # 3
+message QueryGetCompanyRequest {
+	string id = 1;
+}
+
+message QueryGetCompanyResponse {
+	Company Company = 1;
+}
+
+message QueryAllCompanyRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllCompanyResponse {
+	repeated Company Company = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
